@@ -45,10 +45,10 @@ class ExpressNotebook {
   _loadPosts() {
     this._loadedPosts = {};
 
-    this._data.posts.forEach((post) => {
-      const markdown = fs.readFileSync(`${this._postsDir}/${post.filename}`, 'utf8');
+    this._data.posts.forEach(({ filename, slug }) => {
+      const markdown = fs.readFileSync(`${this._postsDir}/${filename}`, 'utf8');
 
-      this._loadedPosts[post.slug] = marked(markdown);
+      this._loadedPosts[slug] = marked(markdown);
     });
   }
 
@@ -57,13 +57,13 @@ class ExpressNotebook {
    * its metadata.
    */
   _setMiddleware() {
-    this._data.posts.forEach((post) => {
+    this._data.posts.forEach(({ slug, metadata }) => {
 
       // Register the route for this post.
-      this._app.get(`${this._urlPath}/${post.slug}`, (req, res) => {
+      this._app.get(`${this._urlPath}/${slug}`, (req, res) => {
         res.render(this._template, {
-          post: this._loadedPosts[post.slug],
-          metadata: post.metadata
+          metadata,
+          post: this._loadedPosts[slug]
         });
       });
     });
