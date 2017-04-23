@@ -83,3 +83,8 @@ res.render('/posts', {
 });
 ...
 ```
+
+## Changelog
+
+* 1.0.1 Bump version for publishing via npm instead of Yarn (see https://github.com/yarnpkg/yarn/issues/1619)
+* 1.0.0 Initial release
