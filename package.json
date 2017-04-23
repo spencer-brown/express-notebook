@@ -1,0 +1,12 @@
+{
+  "name": "express-notebook",
+  "version": "1.0.0",
+  "description": "A drop-in markdown blogging framework for Express applications that takes 60 seconds to set up.",
+  "main": "src/index.js",
+  "repository": "https://github.com/spencer-brown/express-notebook",
+  "author": "Spencer Brown <me@spencer.sx>",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.3.6"
+  }
+}
